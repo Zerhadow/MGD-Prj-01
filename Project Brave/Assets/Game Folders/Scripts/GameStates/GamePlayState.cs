@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayState : MonoBehaviour
+public class GamePlayState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameFSM _stateMachine;
+    private GameController _controller;
+
+    public GamePlayState(GameFSM stateMachine, GameController controller)
     {
-        
+        _stateMachine = stateMachine;
+        _controller = controller;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void Enter() {
+        base.Enter();
+        Debug.Log("STATE: Game Play");
+    }
+
+    public override void Exit() {
+        base.Exit();
     }
 }
