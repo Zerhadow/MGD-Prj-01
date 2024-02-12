@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameWinState : State
+// A template state to duplicate
+public class GameTMPState : State
 {
-    private GameFSM _stateMachine;
+private GameFSM _stateMachine;
     private GameController _controller;
 
-    public GameWinState(GameFSM stateMachine, GameController controller)
+    public GameTMPState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
         _controller = controller;
@@ -15,7 +16,7 @@ public class GameWinState : State
 
     public override void Enter() {
         base.Enter();
-        Debug.Log("STATE: Win State");
+        Debug.Log("STATE: Template State");
     }
 
     public override void Exit() {

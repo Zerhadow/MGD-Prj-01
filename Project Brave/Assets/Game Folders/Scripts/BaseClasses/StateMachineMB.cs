@@ -1,9 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-using System.Collections;
-using UnityEngine;
-
 public abstract class StateMachineMB : MonoBehaviour
 {
     public State CurrentState { get; private set; }

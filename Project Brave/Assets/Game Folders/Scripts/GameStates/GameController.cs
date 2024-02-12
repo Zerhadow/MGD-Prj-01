@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [field: SerializeField]
-    public TouchInput Input{ get; private set; }
+    [Header("Dependencies")]
+    [SerializeField] private TouchInput _input;
+    [SerializeField] private GameObject _titleScreen;
+
+    public TouchInput Input => _input;
+    public GameObject TitleScreenObj => _titleScreen;
 }
