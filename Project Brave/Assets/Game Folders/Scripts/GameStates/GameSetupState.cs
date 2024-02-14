@@ -18,6 +18,8 @@ public class GameSetupState : State
 
         Debug.Log("STATE: Game Setup");
 
+        _controller.SetupAudio.Play();
+
         // Disables everything on the canvas
         // Iterate through all child GameObjects
         foreach (Transform child in _controller.Canvas.transform)

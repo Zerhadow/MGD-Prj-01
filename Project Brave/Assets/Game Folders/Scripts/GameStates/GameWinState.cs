@@ -17,12 +17,14 @@ public class GameWinState : State
         base.Enter();
         Debug.Log("STATE: Win State");
 
+        _controller.WinAudio.Play();
+
         // Activate canva elems
         _controller.WinPrompt.SetActive(true);
         _controller.stateName.text = "Win State";
 
         // Provide audio cue
-        _controller.WinAudio.Play();
+        _controller.WinCue.Play();
     }
 
     public override void Update() {

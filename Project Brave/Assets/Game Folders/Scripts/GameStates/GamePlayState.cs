@@ -19,6 +19,8 @@ public class GamePlayState : State
         base.Enter();
         Debug.Log("STATE: Game Play");
 
+        _controller.PlayAudio.Play();
+
         // Activate canva elems
         _controller.SummonBtn.SetActive(true);
         _controller.EnemyTextObj.SetActive(true);
