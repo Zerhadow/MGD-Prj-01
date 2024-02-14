@@ -27,9 +27,18 @@ private GameFSM _stateMachine;
         _controller.LoseAudio.Play();
     }
 
+    public override void Update() {
+        base.Update();
+
+        //check for tap input
+        if(Input.GetMouseButtonDown(0)) {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
     public override void Exit() {
         base.Exit();
         _controller.LosePrompt.SetActive(false);
-        SceneManager.LoadScene("MainMenu");
+        _controller.Music.Stop();
     }
 }

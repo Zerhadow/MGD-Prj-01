@@ -25,6 +25,8 @@ public class GamePlayState : State
         _controller.stateName.text = "Play State";
         _controller.enemyHPText.text = "Enemy Power: " + _controller.enemyPower;
 
+        _controller.Music.Play();
+
         CalculateEnemyPower();
     }       
 
@@ -67,8 +69,7 @@ public class GamePlayState : State
     }
 
     private void Combat() { // Determine who wins
-        Debug.Log("Player power: " + _controller.playerPower);
-        Debug.Log("Enemy power: " + _controller.playerPower);
+        Debug.Log(_controller.playerPower + " vs " + _controller.enemyPower);
 
         if(_controller.playerPower > _controller.enemyPower) {
             _stateMachine.ChangeState(_stateMachine.WinState);

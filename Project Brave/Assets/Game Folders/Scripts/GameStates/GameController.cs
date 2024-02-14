@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     [Header("PlayState Dependencies")]
     [SerializeField] private GameObject _summonBtn;
     [SerializeField] private GameObject _enemyTextObj;
+    [SerializeField] private AudioSource _music;
     public TMP_Text stateName;
     public TMP_Text enemyHPText;
     public int enemyPower;
@@ -39,6 +40,8 @@ public class GameController : MonoBehaviour
     public GameObject LosePrompt => _losePrompt;
     public GameObject SummonBtn => _summonBtn;
     public GameObject EnemyTextObj => _enemyTextObj;
+    public AudioSource Music => _music;
+
 
     public void SummonBtnPress() {
         btnPress = true;
