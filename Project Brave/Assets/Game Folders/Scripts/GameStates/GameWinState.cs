@@ -16,9 +16,26 @@ public class GameWinState : State
     public override void Enter() {
         base.Enter();
         Debug.Log("STATE: Win State");
+
+        // Activate canva elems
+        _controller.WinPrompt.SetActive(true);
+        _controller.stateName.text = "Win State";
+
+        // Provide audio cue
+        _controller.WinAudio.Play();
+    }
+
+    public override void Update() {
+        base.Update();
+
+        //check for tap input
+        if(Input.GetMouseButtonDown(0)) {
+            _stateMachine.ChangeState(_stateMachine.PlayState);
+        }
     }
 
     public override void Exit() {
         base.Exit();
+        _controller.WinPrompt.SetActive(false);
     }
 }

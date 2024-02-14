@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GamePlayState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
-    float victoryClear = 0;
+    float roundsWon = 0;
 
     public GamePlayState(GameFSM stateMachine, GameController controller)
     {
@@ -18,18 +19,62 @@ public class GamePlayState : State
         base.Enter();
         Debug.Log("STATE: Game Play");
 
-        // have tanks start idle combat
-        
-    }
+        // Activate canva elems
+        _controller.SummonBtn.SetActive(true);
+        _controller.EnemyTextObj.SetActive(true);
+        _controller.stateName.text = "Play State";
+        _controller.enemyHPText.text = "Enemy Power: " + _controller.enemyPower;
+
+        CalculateEnemyPower();
+    }       
 
     public override void Update()
     {
         base.Update();
+        // Check for player button press
+        if(_controller.btnPress) {
+            _controller.SummonBtn.SetActive(false);
+            CalculatePlayerPower();
+            Combat();
+            _controller.btnPress = false;
+        } else {
+            // Make button fluctuate
+        }
     }
 
     public override void Exit() {
         base.Exit();
+        _controller.SummonBtn.SetActive(false);
+        _controller.EnemyTextObj.SetActive(false);
+        _controller.playerPower = 0; // reset player power
+    }
 
-        // remove all sounds of combat but continue number of victories at the level
+    private void CalculateEnemyPower() {
+        _controller.enemyPower  += 1;
+    }
+
+    public void CalculatePlayerPower() {
+        int dSix = Random.Range(1,7); // 1 - 6      
+        for(int i = 0; i < 3; i++) { // summons three tanks
+            if(dSix <= 2) { // bad unit
+                _controller.playerPower -= 1;
+            } else if(dSix == 3 || dSix == 4) { // neutral unit
+                _controller.playerPower += 1;
+            } else { // good unit
+                _controller.playerPower += 2;
+            }
+        }
+    }
+
+    private void Combat() { // Determine who wins
+        Debug.Log("Player power: " + _controller.playerPower);
+        Debug.Log("Enemy power: " + _controller.playerPower);
+
+        if(_controller.playerPower > _controller.enemyPower) {
+            _stateMachine.ChangeState(_stateMachine.WinState);
+            roundsWon += 1;
+        } else {
+            _stateMachine.ChangeState(_stateMachine.LoseState);
+        }
     }
 }

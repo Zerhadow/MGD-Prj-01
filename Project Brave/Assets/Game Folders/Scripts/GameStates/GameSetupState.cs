@@ -17,12 +17,19 @@ public class GameSetupState : State
         base.Enter();
 
         Debug.Log("STATE: Game Setup");
-        // Debug.Log("Load Save Data");
-        Debug.Log("Trigger intro theme");
-        // Debug.Log("Trigger intro");
+
+        // Disables everything on the canvas
+        // Iterate through all child GameObjects
+        foreach (Transform child in _controller.Canvas.transform)
+        {
+            // Set each child GameObject to inactive
+            child.gameObject.SetActive(false);
+        }
 
         // Activate canva elems
-        _controller.TitleScreenObj.SetActive(true);
+        _controller.Instructions.SetActive(true);
+        _controller.StateIdicator.SetActive(true);
+        _controller.stateName.text = "Setup State";
     }
 
     public override void Update()
@@ -30,7 +37,8 @@ public class GameSetupState : State
         base.Update();
 
         //check for tap input
-        if(Input.GetMouseButtonDown(0)) { 
+        if(Input.GetMouseButtonDown(0)) {
+            _controller.Instructions.SetActive(false);
             _stateMachine.ChangeState(_stateMachine.PlayState);
         }
         
@@ -39,8 +47,5 @@ public class GameSetupState : State
 
     public override void Exit() {
         base.Exit();
-
-        // remove the intro screen
-        _controller.TitleScreenObj.SetActive(false);
     }
 }
