@@ -8,8 +8,7 @@ public class GameController : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private TouchInput _input;
-    [SerializeField] private GameObject _instructions;
-    [SerializeField] private GameObject _canvas;
+    [SerializeField] private UIController _ui;
 
     [Header("State Idicators")]
     [SerializeField] private GameObject _stateIdicator;
@@ -36,8 +35,7 @@ public class GameController : MonoBehaviour
     public bool btnPress = false;
 
     public TouchInput Input => _input;
-    public GameObject Instructions => _instructions;
-    public GameObject Canvas => _canvas;
+    public UIController UI => _ui;
     public GameObject StateIdicator => _stateIdicator;
     public AudioSource SetupAudio => _setupAudio;
     public AudioSource PlayAudio => _playAudio;
