@@ -51,7 +51,8 @@ public class GamePlayState : State
     }
 
     private void CalculateEnemyPower() {
-        _controller.enemyPower  += 100;
+        int newPower = (int)(roundsWon * 100);
+        _controller.enemyPower  += newPower;
     }
 
     private void DetermineWinner() {

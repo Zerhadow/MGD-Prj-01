@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
     public GameObject lobbyMenu;
     public GameObject summonMenu;
     public GameObject battleMenu;
+    public GameObject unitMenu;
     [Header("Player Dependencies")]
     public int silverCost;
     public int goldCost;
@@ -47,7 +48,7 @@ public class UIController : MonoBehaviour
     }
 
     public void ChangeToUnit() {
-        // _stateMachine.ChangeState(_stateMachine.UnitState);
+        _stateMachine.ChangeState(_stateMachine.UnitState);
     }
 
     public void ChangeToLobby() {
