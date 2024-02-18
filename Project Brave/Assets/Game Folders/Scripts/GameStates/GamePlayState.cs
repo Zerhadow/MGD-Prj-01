@@ -22,12 +22,14 @@ public class GamePlayState : State
         _controller.PlayAudio.Play();
 
         // Activate canva elems
-        _controller.SummonBtn.SetActive(true);
-        _controller.EnemyTextObj.SetActive(true);
-        _controller.stateName.text = "Play State";
-        _controller.enemyHPText.text = "Enemy Power: " + _controller.enemyPower;
+        _controller.stateName.text = "Battle State";
+        _controller.UI.battleMenu.SetActive(true);
+        _controller.UI.winPrompt.SetActive(false);
+        _controller.UI.losePrompt.SetActive(false);
 
-        _controller.Music.Play();
+
+        _controller.UI.enemyPowerText.text = "Enemy Power: " + _controller.enemyPower;
+        _controller.UI.playerPowerText.text = "Player Power: " + _controller.PlayerController.totalPower;
 
         CalculateEnemyPower();
     }       
@@ -36,44 +38,24 @@ public class GamePlayState : State
     {
         base.Update();
         // Check for player button press
-        if(_controller.btnPress) {
-            _controller.SummonBtn.SetActive(false);
-            CalculatePlayerPower();
-            Combat();
-            _controller.btnPress = false;
-        } else {
-            // Make button fluctuate
+        if(_controller.PlayerController.startFight) {
+            DetermineWinner();
+            _controller.PlayerController.startFight = false;
         }
     }
 
     public override void Exit() {
         base.Exit();
-        _controller.SummonBtn.SetActive(false);
-        _controller.EnemyTextObj.SetActive(false);
-        _controller.playerPower = 0; // reset player power
+        _controller.UI.battleMenu.SetActive(false);
+        // _controller.playerPower = 0; // reset player power
     }
 
     private void CalculateEnemyPower() {
-        _controller.enemyPower  += 1;
+        _controller.enemyPower  += 100;
     }
 
-    public void CalculatePlayerPower() {
-        int dSix = Random.Range(1,7); // 1 - 6      
-        for(int i = 0; i < 3; i++) { // summons three tanks
-            if(dSix <= 2) { // bad unit
-                _controller.playerPower -= 1;
-            } else if(dSix == 3 || dSix == 4) { // neutral unit
-                _controller.playerPower += 1;
-            } else { // good unit
-                _controller.playerPower += 2;
-            }
-        }
-    }
-
-    private void Combat() { // Determine who wins
-        Debug.Log(_controller.playerPower + " vs " + _controller.enemyPower);
-
-        if(_controller.playerPower > _controller.enemyPower) {
+    private void DetermineWinner() {
+        if(_controller.PlayerController.totalPower > _controller.enemyPower) {
             _stateMachine.ChangeState(_stateMachine.WinState);
             roundsWon += 1;
         } else {

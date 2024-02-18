@@ -30,7 +30,7 @@ public class GameSetupState : State
 
         // Activate canva elems
         _controller.UI.instructions.SetActive(true);
-        _controller.StateIdicator.SetActive(true);
+        _controller.UI._stateIdicator.SetActive(true);
         _controller.stateName.text = "Setup State";
     }
 

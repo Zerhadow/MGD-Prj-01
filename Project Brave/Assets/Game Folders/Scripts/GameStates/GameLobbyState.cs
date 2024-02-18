@@ -20,6 +20,9 @@ public class GameLobbyState : State
         // Activate canva elems
         _controller.stateName.text = "Lobby State";
         _controller.UI.lobbyMenu.SetActive(true);
+        _controller.UI.header.SetActive(true);
+
+        _controller.Music.Play();
     }
 
     public override void Update()

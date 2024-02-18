@@ -20,7 +20,7 @@ public class GameWinState : State
         _controller.WinAudio.Play();
 
         // Activate canva elems
-        _controller.WinPrompt.SetActive(true);
+        _controller.UI.winPrompt.SetActive(true);
         _controller.stateName.text = "Win State";
 
         // Provide audio cue
@@ -38,6 +38,6 @@ public class GameWinState : State
 
     public override void Exit() {
         base.Exit();
-        _controller.WinPrompt.SetActive(false);
+        _controller.UI.winPrompt.SetActive(false);
     }
 }

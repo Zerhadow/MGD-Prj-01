@@ -82,6 +82,6 @@ public abstract class StateMachineMB : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        CurrentState?.Exit();
+        // CurrentState?.Exit();
     }
 }

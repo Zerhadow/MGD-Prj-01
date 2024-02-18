@@ -23,7 +23,7 @@ private GameFSM _stateMachine;
 
         // Activate canva elems
         _controller.stateName.text = "Lose State";
-        _controller.LosePrompt.SetActive(true);
+        _controller.UI.losePrompt.SetActive(true);
 
         // Provide audio cue
         _controller.LoseCue.Play();
@@ -40,7 +40,6 @@ private GameFSM _stateMachine;
 
     public override void Exit() {
         base.Exit();
-        _controller.LosePrompt.SetActive(false);
         _controller.Music.Stop();
     }
 }
