@@ -15,4 +15,14 @@ public class TankBase : ScriptableObject
     public GameObject tankPrefab;
     public int Level { get; set; }
     public float Power;
+    public int fragments;
+
+    public void LevelUp() {
+        int expNeeded = 0;
+
+        if(fragments == expNeeded) {
+            Power += Random.Range(100, 200);
+            fragments = 0;
+        }
+    }
 }
