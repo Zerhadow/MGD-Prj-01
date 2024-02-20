@@ -32,7 +32,7 @@ public class GameWinState : State
 
         //check for tap input
         if(Input.GetMouseButtonDown(0)) {
-            _stateMachine.ChangeState(_stateMachine.PlayState);
+            _stateMachine.ChangeState(_stateMachine.LobbyState);
         }
     }
 
