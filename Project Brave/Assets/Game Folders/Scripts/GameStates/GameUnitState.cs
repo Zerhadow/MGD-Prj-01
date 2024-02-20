@@ -20,6 +20,13 @@ public class GameUnitState : State
         // Activate canva elems
         _controller.stateName.text = "Unit State";
         _controller.UI.unitMenu.SetActive(true);
+        
+        // Deactivate any unit page canva elems
+        if(_controller.PlayerController.Squad.Count != 0) {
+            foreach (TankBase tank in _controller.PlayerController.Squad) {
+                // _controller.UI.t1Unit.t1InfoObj.SetActive(false);
+            }
+        }
     }
 
     public override void Update()

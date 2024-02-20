@@ -28,6 +28,8 @@ public class UIController : MonoBehaviour
     public TMP_Text enemyPowerText;
     public GameObject winPrompt;
     public GameObject losePrompt;
+    [Header("Unit Dependencies")]
+    public T1 t1Unit;
 
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
