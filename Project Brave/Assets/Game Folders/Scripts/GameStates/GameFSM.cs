@@ -13,6 +13,7 @@ public class GameFSM : StateMachineMB
     public GameSummonState SummonState { get; private set; }
     public GamePlayState PlayState { get; private set; }
     public GameUnitState UnitState { get; private set; }
+    public GameUnitPageState UnitPageState { get; private set; }
     public GameWinState WinState { get; private set; }
     public GameLoseState LoseState { get; private set; }
 
@@ -25,6 +26,7 @@ public class GameFSM : StateMachineMB
         SummonState = new GameSummonState(this, _controller);
         PlayState = new GamePlayState(this, _controller);
         UnitState = new GameUnitState(this, _controller);
+        UnitPageState = new GameUnitPageState(this, _controller);
         WinState = new GameWinState(this, _controller);
         LoseState = new GameLoseState(this, _controller);
     }

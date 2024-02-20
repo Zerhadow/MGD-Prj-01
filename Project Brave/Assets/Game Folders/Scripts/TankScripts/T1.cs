@@ -10,11 +10,6 @@ public class T1 : MonoBehaviour
     private TMP_Text t1PowerInfoText;
     private TMP_Text t1FragmentsInfoText;
 
-    public void T1UnitPage() 
-    {
-        t1InfoObj.SetActive(true);
-    }
-
     public void T1UpdateStats() {
     }
 }

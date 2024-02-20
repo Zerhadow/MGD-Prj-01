@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         totalPower += newTank.Power;
     }
 
-    private bool CheckCopy(string pulledTankName) 
+    public bool CheckCopy(string pulledTankName) 
     {
         foreach (TankBase tank in Squad) {
             if(tank.name == pulledTankName) {

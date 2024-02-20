@@ -29,6 +29,7 @@ public class UIController : MonoBehaviour
     public GameObject winPrompt;
     public GameObject losePrompt;
     [Header("Unit Dependencies")]
+    public GameObject t1UnitObj;
     public T1 t1Unit;
 
     private void Awake() {
@@ -75,5 +76,10 @@ public class UIController : MonoBehaviour
     public void StartCombat() {
         Debug.Log("Start Combat");
         gameController.PlayerController.startFight = true;
+    }
+
+    public void T1UnitPage() 
+    {
+        _stateMachine.ChangeState(_stateMachine.UnitPageState);
     }
 }

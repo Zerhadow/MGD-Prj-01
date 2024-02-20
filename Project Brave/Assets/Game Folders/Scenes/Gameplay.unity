@@ -2392,6 +2392,7 @@ MonoBehaviour:
   enemyPowerText: {fileID: 900541366}
   winPrompt: {fileID: 831991789}
   losePrompt: {fileID: 1221359943}
+  t1UnitObj: {fileID: 340061392}
   t1Unit: {fileID: 0}
 --- !u!1 &617789882
 GameObject:
@@ -8143,8 +8144,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1399335071}
-        m_TargetAssemblyTypeName: T1, Assembly-CSharp
+      - m_Target: {fileID: 578306625}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: T1UnitPage
         m_Mode: 1
         m_Arguments:
