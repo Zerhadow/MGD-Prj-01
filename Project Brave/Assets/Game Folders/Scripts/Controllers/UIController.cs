@@ -30,7 +30,8 @@ public class UIController : MonoBehaviour
     public GameObject losePrompt;
     [Header("Unit Dependencies")]
     public GameObject t1UnitObj;
-    public T1 t1Unit;
+    public TMP_Text t1PowerText;
+    public TMP_Text t1FragmentText;
 
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
@@ -80,6 +81,11 @@ public class UIController : MonoBehaviour
 
     public void T1UnitPage() 
     {
-        _stateMachine.ChangeState(_stateMachine.UnitPageState);
+        if(gameController.PlayerController.GetTank("T1") != null) { // Check if they have the tank
+            TankBase t1 = gameController.PlayerController.GetTank("T1");
+            t1PowerText.text = "Power \n" + t1.Power;
+            t1FragmentText.text = "Fragments " + t1.fragments;
+            _stateMachine.ChangeState(_stateMachine.UnitPageState);
+        } else { Debug.Log("Player doesn't have tank yet"); }
     }
 }

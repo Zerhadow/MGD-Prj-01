@@ -2393,7 +2393,8 @@ MonoBehaviour:
   winPrompt: {fileID: 831991789}
   losePrompt: {fileID: 1221359943}
   t1UnitObj: {fileID: 340061392}
-  t1Unit: {fileID: 0}
+  t1PowerText: {fileID: 1722223337}
+  t1FragmentText: {fileID: 799114036}
 --- !u!1 &617789882
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,4 +75,14 @@ public class PlayerController : MonoBehaviour
 
         return false;
     }
+
+    public TankBase GetTank(string name) {
+        foreach (TankBase tank in Squad) {
+            if(tank.name == name) {
+                return tank;
+            }
+        }
+
+        return null;
+    }
 }

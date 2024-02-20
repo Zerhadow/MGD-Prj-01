@@ -36,11 +36,7 @@ public class GameUnitPageState : State
     public override void Exit() {
         base.Exit();
 
-        // Deactivate any unit page canva elems
-        if(_controller.PlayerController.Squad.Count != 0) {
-            if(_controller.PlayerController.CheckCopy("T1")) {
-                _controller.UI.t1UnitObj.SetActive(false);
-            }
-        }
+        // Deactivate all unit pages
+        _controller.UI.t1UnitObj.SetActive(false);
     }
 }
