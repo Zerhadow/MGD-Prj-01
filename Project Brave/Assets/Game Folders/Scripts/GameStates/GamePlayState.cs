@@ -29,7 +29,7 @@ public class GamePlayState : State
 
 
         _controller.UI.enemyPowerText.text = "Enemy Power: " + _controller.enemyPower;
-        _controller.UI.playerPowerText.text = "Player Power: " + _controller.PlayerController.totalPower;
+        _controller.UI.playerPowerText.text = "Player Power: " + _controller.PlayerController.GetTotalPower();
 
         CalculateEnemyPower();
     }       
@@ -56,7 +56,7 @@ public class GamePlayState : State
     }
 
     private void DetermineWinner() {
-        if(_controller.PlayerController.totalPower > _controller.enemyPower) {
+        if(_controller.PlayerController.GetTotalPower() > _controller.enemyPower) {
             _stateMachine.ChangeState(_stateMachine.WinState);
             roundsWon += 1;
         } else {

@@ -25,6 +25,10 @@ public class GameWinState : State
 
         // Provide audio cue
         _controller.WinCue.Play();
+
+        // Give player gold & silver
+        _controller.PlayerController.gold += 10;
+        _controller.PlayerController.silver = CalculateSilver();
     }
 
     public override void Update() {
@@ -39,5 +43,9 @@ public class GameWinState : State
     public override void Exit() {
         base.Exit();
         _controller.UI.winPrompt.SetActive(false);
+    }
+
+    private int CalculateSilver() {
+        return (int)(_controller.PlayerController.GetTotalPower() - _controller.enemyPower);
     }
 }

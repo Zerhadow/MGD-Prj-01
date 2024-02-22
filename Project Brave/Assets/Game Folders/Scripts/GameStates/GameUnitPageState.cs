@@ -22,8 +22,12 @@ public class GameUnitPageState : State
         _controller.UI.unitMenu.SetActive(true);
         _controller.UI.levelUpBtn.SetActive(true);
         
-        if(_controller.PlayerController.CheckCopy("T1")) {
+        if(_controller.UI.unitSelected == UIController.SelectedUnit.T1) {
             _controller.UI.t1UnitObj.SetActive(true);
+        }
+
+        if(_controller.UI.unitSelected == UIController.SelectedUnit.MS1) {
+            _controller.UI.ms1UnitObj.SetActive(true);
         }
         
     }
@@ -38,6 +42,7 @@ public class GameUnitPageState : State
 
         // Deactivate all unit pages
         _controller.UI.t1UnitObj.SetActive(false);
+        _controller.UI.ms1UnitObj.SetActive(false);
         _controller.UI.levelUpBtn.SetActive(false);
 
         _controller.UI.unitSelected = UIController.SelectedUnit.None;

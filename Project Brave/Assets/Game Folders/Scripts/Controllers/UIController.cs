@@ -39,6 +39,9 @@ public class UIController : MonoBehaviour
     public GameObject t1UnitObj;
     public TMP_Text t1PowerText;
     public TMP_Text t1FragmentText;
+    public GameObject ms1UnitObj;
+    public TMP_Text ms1PowerText;
+    public TMP_Text ms1FragmentText;
 
     private void Awake() {
         _stateMachine = GetComponentInParent<GameFSM>();
@@ -93,6 +96,13 @@ public class UIController : MonoBehaviour
             t1PowerText.text = "Power \n" + t1.Power;
             t1FragmentText.text = "Fragments " + t1.fragments;
         }
+
+        if(unitSelected == SelectedUnit.MS1) {
+            gameController.PlayerController.LevelUpUnit("MS-1");
+            TankBase ms1 = gameController.PlayerController.GetTank("MS-1");
+            ms1PowerText.text = "Power \n" + ms1.Power;
+            ms1FragmentText.text = "Fragments " + ms1.fragments;
+        }
     }
 
     public void T1UnitPage() 
@@ -102,6 +112,17 @@ public class UIController : MonoBehaviour
             TankBase t1 = gameController.PlayerController.GetTank("T1");
             t1PowerText.text = "Power \n" + t1.Power;
             t1FragmentText.text = "Fragments " + t1.fragments;
+            _stateMachine.ChangeState(_stateMachine.UnitPageState);
+        } else { Debug.Log("Player doesn't have tank yet"); }
+    }
+
+    public void MS1UnitPage() 
+    {
+        if(gameController.PlayerController.GetTank("MS-1") != null) { // Check if they have the tank
+            unitSelected = SelectedUnit.MS1;
+            TankBase ms1 = gameController.PlayerController.GetTank("MS-1");
+            ms1PowerText.text = "Power \n" + ms1.Power;
+            ms1FragmentText.text = "Fragments " + ms1.fragments;
             _stateMachine.ChangeState(_stateMachine.UnitPageState);
         } else { Debug.Log("Player doesn't have tank yet"); }
     }
