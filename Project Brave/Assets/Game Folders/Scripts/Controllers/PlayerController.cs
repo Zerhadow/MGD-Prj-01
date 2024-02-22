@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
                 // maybe show player how many fragments they have
             } else { // add tank to squad
                 tankPull.Power = Random.Range(100, 200);
+                tankPull.fragments = 0;
                 Squad.Add(tankPull);
                 AddPower(tankPull);
             }
@@ -84,5 +85,13 @@ public class PlayerController : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void LevelUpUnit(string name) {
+        foreach (TankBase tank in Squad) {
+            if(tank.name == name) {
+                tank.LevelUp();
+            }
+        }
     }
 }

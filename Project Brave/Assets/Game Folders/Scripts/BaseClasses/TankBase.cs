@@ -16,13 +16,14 @@ public class TankBase : ScriptableObject
     public int Level { get; set; }
     public float Power;
     public int fragments;
+    private int expNeeded = 0;
 
     public void LevelUp() {
-        int expNeeded = 0;
-
-        if(fragments == expNeeded) {
+        if(fragments >= expNeeded) {
             Power += Random.Range(100, 200);
             fragments = 0;
-        }
+            expNeeded += 1;
+            Debug.Log("Unit leveled up");
+        } else { Debug.Log("Not enough fragments"); }
     }
 }

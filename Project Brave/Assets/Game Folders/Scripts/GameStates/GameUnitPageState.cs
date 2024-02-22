@@ -20,12 +20,12 @@ public class GameUnitPageState : State
         // Activate canva elems
         _controller.stateName.text = "Unit Page State";
         _controller.UI.unitMenu.SetActive(true);
+        _controller.UI.levelUpBtn.SetActive(true);
         
-        if(_controller.PlayerController.Squad.Count != 0) {
-            if(_controller.PlayerController.CheckCopy("T1")) {
-                _controller.UI.t1UnitObj.SetActive(true);
-            }
+        if(_controller.PlayerController.CheckCopy("T1")) {
+            _controller.UI.t1UnitObj.SetActive(true);
         }
+        
     }
 
     public override void Update()
@@ -38,5 +38,8 @@ public class GameUnitPageState : State
 
         // Deactivate all unit pages
         _controller.UI.t1UnitObj.SetActive(false);
+        _controller.UI.levelUpBtn.SetActive(false);
+
+        _controller.UI.unitSelected = UIController.SelectedUnit.None;
     }
 }
