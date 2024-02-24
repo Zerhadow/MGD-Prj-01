@@ -17,14 +17,14 @@ public class GameWinState : State
         base.Enter();
         Debug.Log("STATE: Win State");
 
-        _controller.WinAudio.Play();
+        _controller.audioController.WinAudio.Play();
 
         // Activate canva elems
         _controller.UI.winPrompt.SetActive(true);
         _controller.stateName.text = "Win State";
 
         // Provide audio cue
-        _controller.WinCue.Play();
+        _controller.audioController.WinCue.Play();
 
         // Give player gold & silver
         _controller.PlayerController.gold += 10;

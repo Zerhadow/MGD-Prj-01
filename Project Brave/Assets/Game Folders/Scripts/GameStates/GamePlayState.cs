@@ -19,7 +19,7 @@ public class GamePlayState : State
         base.Enter();
         Debug.Log("STATE: Game Play");
 
-        _controller.PlayAudio.Play();
+        _controller.audioController.PlayAudio.Play();
 
         // Activate canva elems
         _controller.stateName.text = "Battle State";

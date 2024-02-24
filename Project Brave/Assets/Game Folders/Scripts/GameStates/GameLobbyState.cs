@@ -22,7 +22,7 @@ public class GameLobbyState : State
         _controller.UI.lobbyMenu.SetActive(true);
         _controller.UI.header.SetActive(true);
 
-        _controller.Music.Play();
+        _controller.audioController.Music.Play();
     }
 
     public override void Update()

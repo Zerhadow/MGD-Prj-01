@@ -54,38 +54,50 @@ public class UIController : MonoBehaviour
     }
 
     public void ChangeToBattle() {
+        gameController.audioController.confirm.Play();
         _stateMachine.ChangeState(_stateMachine.PlayState);
     }
 
     public void ChangeToSummon() {
+        gameController.audioController.confirm.Play();
         _stateMachine.ChangeState(_stateMachine.SummonState);
     }
 
     public void ChangeToUnit() {
+        gameController.audioController.confirm.Play();
         _stateMachine.ChangeState(_stateMachine.UnitState);
     }
 
     public void ChangeToLobby() {
+        gameController.audioController.confirm.Play();
         _stateMachine.ChangeState(_stateMachine.LobbyState);
     }
 
     public void NormalSummonBtn() {
         if(gameController.PlayerController.silver >= silverCost) {
+            gameController.audioController.confirm.Play();
             gameController.PlayerController.silver -= silverCost;
             gameController.PlayerController.GachaTime(1);
         } else {
             Debug.Log("Not enough silver");
+            gameController.audioController.deny.Play();
         }
     }
 
     public void SpecialSummonBtn() {
-            // Debug.Log("Special summon");
-            // playerController.gold -= goldCost;
-            // playerController.GachaTime(2);
+        if(gameController.PlayerController.gold >= goldCost) {
+            gameController.audioController.confirm.Play();
+            gameController.PlayerController.gold -= goldCost;
+            gameController.PlayerController.GachaTime(2);
+        } else {
+            Debug.Log("Not enough gold");
+            gameController.audioController.deny.Play();
+        }
     }
 
     public void StartCombat() {
         Debug.Log("Start Combat");
+        gameController.audioController.confirm.Play();
         gameController.PlayerController.startFight = true;
     }
 
@@ -113,7 +125,10 @@ public class UIController : MonoBehaviour
             t1PowerText.text = "Power \n" + t1.Power;
             t1FragmentText.text = "Fragments " + t1.fragments;
             _stateMachine.ChangeState(_stateMachine.UnitPageState);
-        } else { Debug.Log("Player doesn't have tank yet"); }
+        } else { 
+            Debug.Log("Player doesn't have tank yet");
+            gameController.audioController.deny.Play();
+        }
     }
 
     public void MS1UnitPage() 
@@ -124,6 +139,9 @@ public class UIController : MonoBehaviour
             ms1PowerText.text = "Power \n" + ms1.Power;
             ms1FragmentText.text = "Fragments " + ms1.fragments;
             _stateMachine.ChangeState(_stateMachine.UnitPageState);
-        } else { Debug.Log("Player doesn't have tank yet"); }
+        } else { 
+            Debug.Log("Player doesn't have tank yet");
+            gameController.audioController.deny.Play();
+        }
     }
 }
