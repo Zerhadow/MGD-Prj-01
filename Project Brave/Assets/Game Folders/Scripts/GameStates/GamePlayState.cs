@@ -27,6 +27,7 @@ public class GamePlayState : State
         _controller.UI.winPrompt.SetActive(false);
         _controller.UI.losePrompt.SetActive(false);
 
+        _controller.audioController.Music.Stop();
         _controller.audioController.BattleMusic.Play();
 
 
