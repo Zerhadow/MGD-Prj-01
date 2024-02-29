@@ -27,6 +27,8 @@ public class GamePlayState : State
         _controller.UI.winPrompt.SetActive(false);
         _controller.UI.losePrompt.SetActive(false);
 
+        _controller.audioController.BattleMusic.Play();
+
 
         _controller.UI.enemyPowerText.text = "Enemy Power: " + _controller.enemyPower;
         _controller.UI.playerPowerText.text = "Player Power: " + _controller.PlayerController.GetTotalPower();
@@ -48,6 +50,8 @@ public class GamePlayState : State
         base.Exit();
         _controller.UI.battleMenu.SetActive(false);
         // _controller.playerPower = 0; // reset player power
+
+        _controller.audioController.BattleMusic.Stop();
     }
 
     private void CalculateEnemyPower() {

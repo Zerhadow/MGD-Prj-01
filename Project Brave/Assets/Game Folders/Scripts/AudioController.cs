@@ -14,6 +14,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSource _loseCue;
     [Header("PlayState Dependencies")]
     [SerializeField] private AudioSource _music;
+    [SerializeField] private AudioSource battleMusic;
 
     [Header("SFX")]
     public AudioSource confirm;
@@ -26,4 +27,5 @@ public class AudioController : MonoBehaviour
     public AudioSource WinCue => _winCue;
     public AudioSource LoseCue => _loseCue;
     public AudioSource Music => _music;
+    public AudioSource BattleMusic => battleMusic;
 }
