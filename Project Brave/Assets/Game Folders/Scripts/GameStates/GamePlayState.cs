@@ -30,6 +30,8 @@ public class GamePlayState : State
         _controller.audioController.Music.Stop();
         _controller.audioController.BattleMusic.Play();
 
+        _controller.UI.footer.SetActive(true);
+
 
         _controller.UI.enemyPowerText.text = "Enemy Power: " + _controller.enemyPower;
         _controller.UI.playerPowerText.text = "Player Power: " + _controller.PlayerController.GetTotalPower();

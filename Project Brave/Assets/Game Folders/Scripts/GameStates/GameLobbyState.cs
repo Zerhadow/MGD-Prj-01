@@ -21,6 +21,7 @@ public class GameLobbyState : State
         _controller.stateName.text = "Lobby State";
         _controller.UI.lobbyMenu.SetActive(true);
         _controller.UI.header.SetActive(true);
+        _controller.UI.footer.SetActive(false);
 
         _controller.audioController.Music.Play();
     }

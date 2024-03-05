@@ -20,6 +20,7 @@ public class GameUnitState : State
         // Activate canva elems
         _controller.stateName.text = "Unit State";
         _controller.UI.unitMenu.SetActive(true);
+        _controller.UI.footer.SetActive(true);
     }
 
     public override void Update()

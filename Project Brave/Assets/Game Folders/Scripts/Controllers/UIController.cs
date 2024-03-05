@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
     [Header("Setup Dependencies")]
     public GameObject instructions;
     public GameObject header;
+    public GameObject footer;
     [Header("Lobby Dependencies")]
     public GameObject lobbyMenu;
     public GameObject summonMenu;

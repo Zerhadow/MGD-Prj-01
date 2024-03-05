@@ -20,6 +20,7 @@ public class GameSummonState : State
         // Activate canva elems
         _controller.stateName.text = "Summon State";
         _controller.UI.summonMenu.SetActive(true);
+        _controller.UI.footer.SetActive(true);
     }
 
     public override void Update()
