@@ -46,5 +46,6 @@ public class GameUnitPageState : State
         _controller.UI.levelUpBtn.SetActive(false);
 
         _controller.UI.unitSelected = UIController.SelectedUnit.None;
+        _controller.UI.unitMenu.SetActive(false);
     }
 }

@@ -8,6 +8,7 @@ public class GamePlayState : State
     private GameFSM _stateMachine;
     private GameController _controller;
     float roundsWon = 0;
+    private float roundNum = 1; // intianiates first round
 
     public GamePlayState(GameFSM stateMachine, GameController controller)
     {
@@ -32,11 +33,9 @@ public class GamePlayState : State
 
         _controller.UI.footer.SetActive(true);
 
-
+        CalculateEnemyPower();
         _controller.UI.enemyPowerText.text = "Enemy Power: " + _controller.enemyPower;
         _controller.UI.playerPowerText.text = "Player Power: " + _controller.PlayerController.GetTotalPower();
-
-        CalculateEnemyPower();
     }       
 
     public override void Update()
@@ -59,8 +58,12 @@ public class GamePlayState : State
     }
 
     private void CalculateEnemyPower() {
-        int newPower = (int)(roundsWon * 100);
-        _controller.enemyPower  += newPower;
+        if(roundNum == 1) {
+            _controller.enemyPower = 100;
+        } else {
+            int newPower = (int)(roundsWon * 100);
+            _controller.enemyPower  += newPower;
+        }
     }
 
     private void DetermineWinner() {

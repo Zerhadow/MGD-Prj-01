@@ -28,7 +28,7 @@ public class GameWinState : State
 
         // Give player gold & silver
         _controller.PlayerController.gold += 10;
-        _controller.PlayerController.silver = CalculateSilver();
+        _controller.PlayerController.silver += CalculateSilver();
     }
 
     public override void Update() {
