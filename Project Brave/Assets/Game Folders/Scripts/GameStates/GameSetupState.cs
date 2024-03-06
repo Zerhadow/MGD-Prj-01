@@ -19,6 +19,7 @@ public class GameSetupState : State
         Debug.Log("STATE: Game Setup");
 
         _controller.audioController.SetupAudio.Play();
+        _controller.audioController.Music.Play();
 
         // Disables everything on the canvas
         // Iterate through all child GameObjects

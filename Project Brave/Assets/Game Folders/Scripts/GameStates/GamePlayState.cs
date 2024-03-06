@@ -55,6 +55,7 @@ public class GamePlayState : State
         // _controller.playerPower = 0; // reset player power
 
         _controller.audioController.BattleMusic.Stop();
+        _controller.audioController.Music.Play();
     }
 
     private void CalculateEnemyPower() {
