@@ -5,25 +5,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameController gameController;
     public int silver;
     public int gold;
     public bool startFight;
     [SerializeField] public List<TankBase> Squad = new List<TankBase>();
     [SerializeField] public List<TankBase> NormalGachaPool = new List<TankBase>();
     [SerializeField] public List<TankBase> SpecialGachaPool = new List<TankBase>();
+    private string tankPulledName;
+    
+    private void Awake() {
+        gameController = GetComponentInParent<GameController>();
+    }
     
     public void GachaTime(int type) {
         if(type == 1) { // normal rates
             int randIdx = Random.Range(0,NormalGachaPool.Count);
             TankBase tankPull = NormalGachaPool[randIdx];
-            Debug.Log("You pulled: " + tankPull.tankPrefab.name);
+            tankPulledName = tankPull.tankPrefab.name;
+            Debug.Log("You pulled: " + tankPulledName);
             GachaPull(tankPull);
         }
 
         if(type == 2) { // special rates
             int randIdx = Random.Range(0,SpecialGachaPool.Count);
             TankBase tankPull = SpecialGachaPool[randIdx];
-            Debug.Log("You pulled: " + tankPull.tankPrefab.name);
+            tankPulledName = tankPull.tankPrefab.name;
+            Debug.Log("You pulled: " + tankPulledName);
             GachaPull(tankPull);
         }
     }
@@ -37,6 +45,26 @@ public class PlayerController : MonoBehaviour
             tank.Power = Random.Range(100, 200);
             tank.fragments = 0;
             Squad.Add(tank);
+        }
+    }
+
+    public void DisplayTankSummoned() {
+        gameController.UI.summonBkg.SetActive(true);
+
+        // disables all tank imgs so they can be set based on pull
+        foreach (Transform child in gameController.UI.tankImgParent.transform) {
+            // Set each child GameObject to inactive
+            child.gameObject.SetActive(false);
+        }
+        
+        if (tankPulledName == "T1") {
+            gameController.UI.tankImgParent.transform.GetChild(0).gameObject.SetActive(true);
+            gameController.UI.tankName.text = "T1";
+        }
+
+        if (tankPulledName == "MS-1") {
+            gameController.UI.tankImgParent.transform.GetChild(1).gameObject.SetActive(true);
+            gameController.UI.tankName.text = "MS-1";
         }
     }
 

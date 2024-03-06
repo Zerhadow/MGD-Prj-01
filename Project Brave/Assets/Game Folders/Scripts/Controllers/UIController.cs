@@ -26,6 +26,10 @@ public class UIController : MonoBehaviour
     public GameObject summonMenu;
     public GameObject battleMenu;
     public GameObject unitMenu;
+    [Header("Summon Dependencies")]
+    public GameObject summonBkg;
+    public GameObject tankImgParent;
+    public TMP_Text tankName;
     [Header("Player Dependencies")]
     public int silverCost;
     public int goldCost;
@@ -79,6 +83,7 @@ public class UIController : MonoBehaviour
             gameController.audioController.confirm.Play();
             gameController.PlayerController.silver -= silverCost;
             gameController.PlayerController.GachaTime(1);
+            gameController.PlayerController.DisplayTankSummoned();
         } else {
             Debug.Log("Not enough silver");
             gameController.audioController.deny.Play();
@@ -90,6 +95,7 @@ public class UIController : MonoBehaviour
             gameController.audioController.confirm.Play();
             gameController.PlayerController.gold -= goldCost;
             gameController.PlayerController.GachaTime(2);
+            gameController.PlayerController.DisplayTankSummoned();
         } else {
             Debug.Log("Not enough gold");
             gameController.audioController.deny.Play();

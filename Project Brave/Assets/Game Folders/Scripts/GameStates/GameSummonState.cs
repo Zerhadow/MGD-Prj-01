@@ -26,6 +26,11 @@ public class GameSummonState : State
     public override void Update()
     {
         base.Update();
+
+        // if button press, deactive summon notif
+        if(Input.GetMouseButtonDown(0)) { // checks tap input
+            _controller.UI.summonBkg.SetActive(false);
+        }
     }
 
     public override void Exit() {
